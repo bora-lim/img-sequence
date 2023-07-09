@@ -1,6 +1,6 @@
 const num = 200;
 const mask = document.querySelector('aside');
-const imgArr = createImgs('figure', num); // 반환된 이미지를 전역변수에 담음
+const imgDom = createImgs('figure', num); // 반환된 이미지를 전역변수에 담음
 let count = 0;
 
 /*
@@ -18,7 +18,7 @@ let count = 0;
 // img 요소는 DOM이 생성이 되어야지 그 이후에 이미지 소스를 불러옴
 // img.onload 이벤트를 연결하면 해당 DOM에 수반되는 소스 이미지가 완료되었을 때 호출됨
 // video.onloadeddata (영상소스 호출 이벤트)
-imgArr.forEach(img => {
+imgDom.forEach(img => {
     img.onload = () => {
         count++;
         const percent = parseInt((count / 200) * 100);
@@ -40,7 +40,7 @@ imgArr.forEach(img => {
 })
 
 // 마우스 무브 이벤트 연결
-window.addEventListener('mousemove', e => matchMove(imgArr, num, e));
+window.addEventListener('mousemove', e => matchMove(imgDom, num, e));
 
 // 동적으로 이미지 생성 후 반환 함수
 function createImgs(targetEl, num) {
@@ -87,7 +87,7 @@ function matchMove(arrEl, num, e) {
         display => repaint 발생
         가장 성능에 유리한 것은 visibility
     */
-    // imgArr[percent].style.display = 'block';
+    // imgDom[percent].style.display = 'block';
     arrEl[percent].style.visibility = 'visible';
 
 }
