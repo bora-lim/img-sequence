@@ -35,10 +35,11 @@ aside {
     background: #222;
     font-size: 5vw;
     color:#fff;
-    transition: 2s;
+    transition: opacity 2s;
 
     p {
         position:relative;
+        width: 100%;
         top: -50px;
         text-align: center;
     }
