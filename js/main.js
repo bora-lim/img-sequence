@@ -1,5 +1,6 @@
 const num = 200;
 const mask = document.querySelector('aside');
+const delay = convertSpeed(mask);
 const imgDom = createImgs('figure', num); // 반환된 이미지를 전역변수에 담음
 let count = 0;
 
@@ -29,7 +30,7 @@ imgDom.forEach(img => {
             mask.classList.add('off');
             setTimeout(() => {
                 mask.remove();
-            }, 2000)
+            }, delay)
         }
     }
 
@@ -92,3 +93,6 @@ function matchMove(arrEl, num, e) {
 
 }
 
+function convertSpeed(el) {
+    return parseFloat(getComputedStyle(el).transitionDuration) * 1000;
+}
